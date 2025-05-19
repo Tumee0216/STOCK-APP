@@ -9,7 +9,7 @@ export function generateXml(stocks: any[]): string {
     xml += `    <Name>${stock.name}</Name>\n`
     xml += `    <Price>${(stock.price || 0).toFixed(2)}</Price>\n`
     xml += `    <Change>${(stock.change || 0).toFixed(2)}</Change>\n`
-    xml += `    <ChangePercent>${stock.changePercent}</ChangePercent>\n`
+    xml += `    <ChangePercent>${(stock.percentChange || 0).toFixed(3)}</ChangePercent>\n`
     xml += `  </Stock>\n`
   })
 

@@ -136,6 +136,7 @@ export default function StockXmlGenerator() {
             ...stock,
             price: quote.price,
             change: quote.change,
+            percentChange: quote.percentChange,
           }
         }
         return stock
@@ -201,6 +202,8 @@ export default function StockXmlGenerator() {
       toast("Failed to save XML")
     }
   }
+
+  console.log(selectedStocks)
 
 
   return (
@@ -306,7 +309,7 @@ export default function StockXmlGenerator() {
                           <div className="flex items-center gap-3">
                             <Badge variant={'secondary'}>
                               {stock.change >= 0 ? "+" : ""}
-                              {stock.change?.toFixed(2) || "0.00"} ({stock.percentChange}%)
+                              {stock.change?.toFixed(2) || "0.00"} ({stock.percentChange.toFixed(3)}%)
                             </Badge>
                             <Badge variant={stock.change >= 0 ? "success" : "destructive"}>
                               ${stock.price?.toFixed(2) || "0.00"}
