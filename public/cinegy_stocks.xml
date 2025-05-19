@@ -1,27 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StockData timestamp="2025-05-18T18:09:22.560Z">
-  <Stock>
-    <Symbol>AAPL</Symbol>
-    <Name>Apple Inc.</Name>
-    <Price>211.26</Price>
-    <Change>-0.19</Change>
-  </Stock>
-  <Stock>
-    <Symbol>TSLA</Symbol>
-    <Name>Tesla Inc.</Name>
-    <Price>349.98</Price>
-    <Change>7.16</Change>
-  </Stock>
-  <Stock>
-    <Symbol>NFLX</Symbol>
-    <Name>Netflix Inc.</Name>
-    <Price>1191.53</Price>
-    <Change>13.55</Change>
-  </Stock>
-  <Stock>
-    <Symbol>WMT</Symbol>
-    <Name>Walmart Inc.</Name>
-    <Price>98.24</Price>
-    <Change>1.89</Change>
-  </Stock>
-</StockData>
+<Ticker>
+  <TickerText>AAPL - Apple Inc. | 211.26 (-0.19)    TSLA - Tesla Inc. | 349.98 (+7.16)</TickerText>
+</Ticker>

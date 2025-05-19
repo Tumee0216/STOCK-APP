@@ -309,7 +309,7 @@ export default function StockXmlGenerator() {
                           <div className="flex items-center gap-3">
                             <Badge variant={'secondary'}>
                               {stock.change >= 0 ? "+" : ""}
-                              {stock.change?.toFixed(2) || "0.00"} ({stock.percentChange.toFixed(3)}%)
+                              {stock.change?.toFixed(2) || "0.00"} ({(Number(stock?.percentChange) || 0).toFixed(3)}%)
                             </Badge>
                             <Badge variant={stock.change >= 0 ? "success" : "destructive"}>
                               ${stock.price?.toFixed(2) || "0.00"}

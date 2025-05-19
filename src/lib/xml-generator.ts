@@ -1,20 +1,15 @@
 export function generateXml(stocks: any[]): string {
-  const date = new Date().toISOString()
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`
-  xml += `<StockData timestamp="${date}">\n`
+  const tickerText = stocks.map((stock) => {
+    const symbol = escapeXml(stock.symbol || "");
+    const name = escapeXml(stock.name || "");
+    const price = (Number(stock.price) || 0).toFixed(2);
+    const change = (Number(stock.change) || 0).toFixed(2);
+    const sign = stock.change >= 0 ? "+" : ""; // Add "+" for positive change
 
-  stocks.forEach((stock) => {
-    xml += `  <Stock>\n`
-    xml += `    <Symbol>${stock.symbol}</Symbol>\n`
-    xml += `    <Name>${stock.name}</Name>\n`
-    xml += `    <Price>${(stock.price || 0).toFixed(2)}</Price>\n`
-    xml += `    <Change>${(stock.change || 0).toFixed(2)}</Change>\n`
-    xml += `    <ChangePercent>${(stock.percentChange || 0).toFixed(3)}</ChangePercent>\n`
-    xml += `  </Stock>\n`
-  })
+    return `${symbol} - ${name} | ${price} (${sign}${change})`;
+  }).join("    "); // 4 spaces between entries
 
-  xml += `</StockData>`
-  return xml
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<Ticker>\n  <TickerText>${escapeXml(tickerText)}</TickerText>\n</Ticker>`;
 }
 
 /**
@@ -23,10 +18,10 @@ export function generateXml(stocks: any[]): string {
  * @returns string - Escaped text
  */
 export function escapeXml(text: string): string {
-  return text
+  return String(text)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;")
+    .replace(/'/g, "&apos;");
 }
